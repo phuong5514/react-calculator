@@ -24,6 +24,6 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true
   },
-  base: '/phuong5514.github.io/',
-  
+  base: '/react-calculator/',
+
 })

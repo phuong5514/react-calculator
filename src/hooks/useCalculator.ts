@@ -206,9 +206,20 @@ export const useCalculator = (onHistoryUpdate?: () => void) => {
   const percentage = useCallback(() => {
     setState(prev => {
       const value = CalculatorEngine.parseInput(prev.displayValue);
+      let result: number;
+      
+      // If there's a pending operation, calculate percentage of the previousValue
+      if (prev.operator && prev.previousValue !== null) {
+        result = (value / 100) * prev.previousValue;
+      } else {
+        // No pending operation, just divide by 100
+        result = value / 100;
+      }
+      
       return {
         ...prev,
-        displayValue: String(value / 100)
+        displayValue: String(result),
+        waitingForOperand: false
       };
     });
   }, []);
