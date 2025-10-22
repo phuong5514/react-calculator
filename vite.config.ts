@@ -23,5 +23,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true
-  }
+  },
+  base: '/phuong5514.github.io/',
+  
 })
